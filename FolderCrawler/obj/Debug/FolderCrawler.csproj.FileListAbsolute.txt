@@ -1,0 +1,14 @@
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\FolderCrawler.exe.config
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\FolderCrawler.exe
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\FolderCrawler.pdb
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.csproj.AssemblyReference.cache
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.csproj.SuggestedBindingRedirects.cache
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.Properties.Resources.resources
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.csproj.GenerateResource.cache
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.csproj.CoreCompileInputs.cache
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.exe
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.pdb
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.Main.resources
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.csproj.CopyComplete
