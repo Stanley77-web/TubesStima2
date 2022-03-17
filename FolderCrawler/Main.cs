@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace FolderCrawler
 {
     public partial class Main : Form
     {
+        string dirChosen;
         public Main()
         {
             InitializeComponent();
@@ -27,9 +29,22 @@ namespace FolderCrawler
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void dirButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("jancokkk jelek banget tombolnyaaaaa aeuuuuuuuughhhhhhh");
+            CommonOpenFileDialog chooseFile = new CommonOpenFileDialog();
+            chooseFile.IsFolderPicker = true;
+            if (chooseFile.ShowDialog() == CommonFileDialogResult.Ok) {
+                dirChosen = chooseFile.FileName;
+                if(dirChosen.Length > 32)
+                {
+                    directoryTextbox.Text = ".." + dirChosen.Substring(dirChosen.Length - 32);
+                }
+            }
+        }
+
+        private void directoryTextbox_TextChanged(object sender, EventArgs e)
+        {
+            // does nothing, actually
         }
     }
 }

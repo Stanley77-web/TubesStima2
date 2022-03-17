@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.directoryTextbox = new System.Windows.Forms.TextBox();
+            this.dirButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.printForm1 = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.directoryTextbox);
+            this.panel1.Controls.Add(this.dirButton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -51,6 +51,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(361, 785);
             this.panel1.TabIndex = 0;
+            // 
+            // directoryTextbox
+            // 
+            this.directoryTextbox.AcceptsReturn = true;
+            this.directoryTextbox.AcceptsTab = true;
+            this.directoryTextbox.AllowDrop = true;
+            this.directoryTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.directoryTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.directoryTextbox.Font = new System.Drawing.Font("Open Sans", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directoryTextbox.ForeColor = System.Drawing.Color.White;
+            this.directoryTextbox.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.directoryTextbox.Location = new System.Drawing.Point(13, 320);
+            this.directoryTextbox.MaxLength = 32;
+            this.directoryTextbox.Name = "directoryTextbox";
+            this.directoryTextbox.ReadOnly = true;
+            this.directoryTextbox.Size = new System.Drawing.Size(335, 24);
+            this.directoryTextbox.TabIndex = 4;
+            this.directoryTextbox.TextChanged += new System.EventHandler(this.directoryTextbox_TextChanged);
+            // 
+            // dirButton
+            // 
+            this.dirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dirButton.FlatAppearance.BorderSize = 0;
+            this.dirButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dirButton.Font = new System.Drawing.Font("Open Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dirButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dirButton.Image = ((System.Drawing.Image)(resources.GetObject("dirButton.Image")));
+            this.dirButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dirButton.Location = new System.Drawing.Point(13, 271);
+            this.dirButton.Name = "dirButton";
+            this.dirButton.Size = new System.Drawing.Size(335, 52);
+            this.dirButton.TabIndex = 3;
+            this.dirButton.TabStop = false;
+            this.dirButton.Text = "Choose Directory";
+            this.dirButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dirButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.dirButton.UseVisualStyleBackColor = false;
+            this.dirButton.Click += new System.EventHandler(this.dirButton_Click);
             // 
             // panel2
             // 
@@ -84,24 +122,6 @@
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(61, 269);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 52);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // printForm1
-            // 
-            this.printForm1.DocumentName = "document";
-            this.printForm1.Form = this;
-            this.printForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
-            this.printForm1.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("printForm1.PrinterSettings")));
-            this.printForm1.PrintFileName = null;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -110,10 +130,11 @@
             this.ClientSize = new System.Drawing.Size(1459, 785);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Main";
-            this.Text = " ";
+            this.Text = "  ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -128,8 +149,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button1;
-        private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm printForm1;
+        private System.Windows.Forms.Button dirButton;
+        private System.Windows.Forms.TextBox directoryTextbox;
     }
 }
 

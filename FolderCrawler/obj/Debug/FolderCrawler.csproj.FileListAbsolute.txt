@@ -12,3 +12,12 @@ C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.Visu
 C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.Main.resources
 C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\obj\Debug\FolderCrawler.csproj.CopyComplete
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.pdb
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
+C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawler\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
