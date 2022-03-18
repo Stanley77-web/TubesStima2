@@ -5,21 +5,29 @@ using System.Windows.Forms;
 
 namespace FolderCrawler
 {
-    internal static class Program
+    
+    internal class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        
-        static public void BFS()
+        private string find_file {get; set;}
+        private string root_path {get; set;}
+
+        public Program() {
+            this.find_file = null;
+            this.root_path = null;
+        }
+        public Program(string find_file, string root_path) {
+            this.find_file = find_file;
+            this.root_path = root_path;
+        }
+        public void BFS()
         {
             Boolean found = false;
-            string find_file = "hehe.txt";
+            this.find_file = "hehe.txt";
             Queue<string> queue_BFS = new Queue<string>();
             // Input path disini
-            string path = @"D:\Video Recording";
-            string[] directories = Directory.GetDirectories(path);
-            string[] files = Directory.GetFiles(path);
+            this.root_path = @"D:\Video Recording";
+            string[] directories = Directory.GetDirectories(this.root_path);
+            string[] files = Directory.GetFiles(this.root_path);
             foreach (string directory in directories)
             {
                 queue_BFS.Enqueue(directory);
@@ -34,7 +42,7 @@ namespace FolderCrawler
                 string current_file = queue_BFS.Dequeue();
                 string file_name = Path.GetFileName(current_file);
                 Console.WriteLine(file_name);
-                if (file_name == find_file)
+                if (file_name == this.find_file)
                 {
                     found = true;
                 }
@@ -52,66 +60,70 @@ namespace FolderCrawler
                     }
                 }
             }
+            
         }
 
-        public static void DFS() {
-        Boolean found = false;
-        Boolean take = false;
+        public void DFS() {
+            Boolean found = false;
+            Boolean take = false;
 
-        string find_file = "Main.cs";
-        List<string> list_Simpul = new List<string>();
-        Stack<string> stack_DFS = new Stack<string>();
+            this.find_file = "Main.cs";
+            List<string> list_Simpul = new List<string>();
+            Stack<string> stack_DFS = new Stack<string>();
 
-        string path = @"E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\Test";
+            this.root_path = @"E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\Test";
 
-        stack_DFS.Push(path);
-        list_Simpul.Add(path);
+            stack_DFS.Push(this.root_path);
+            list_Simpul.Add(this.root_path);
 
-        string[] directories = Directory.GetDirectories(path);
-        string[] files = Directory.GetFiles(path);
+            string[] directories = Directory.GetDirectories(this.root_path);
+            string[] files = Directory.GetFiles(this.root_path);
 
-        string current_file = files[0];
-        string file_taken = files[0];
+            string current_file = null;
+            string file_taken = null;
 
-        while (stack_DFS.Count > 0 && !found) {
-            current_file = stack_DFS.Peek();
-            // Console.WriteLine("1 " + current_file); bisa jdi bagian visualisasi                
-            string file_name = Path.GetFileName(current_file);
-            if (file_name == find_file) {
-                found = true;
-            } else {
-                take = false;
-                if (Directory.Exists(current_file)) {
-                    directories = Directory.GetDirectories(current_file);
-                    files = Directory.GetFiles(current_file);
-                    foreach (string directory in directories) {
-                        if (list_Simpul.IndexOf(directory) == -1 && !take) {
-                            file_taken = directory;
-                            stack_DFS.Push(file_taken);    
-                            list_Simpul.Add(file_taken);
-                            take = true;
-                            break;
+            while (stack_DFS.Count > 0 && !found) {
+                current_file = stack_DFS.Peek();
+                Console.WriteLine("1 " + current_file); //bisa jdi bagian visualisasi                
+                string file_name = Path.GetFileName(current_file);
+                if (file_name == this.find_file) {
+                    found = true;
+                } else {
+                    take = false;
+                    if (Directory.Exists(current_file)) {
+                        directories = Directory.GetDirectories(current_file);
+                        files = Directory.GetFiles(current_file);
+                        foreach (string directory in directories) {
+                            if (list_Simpul.IndexOf(directory) == -1 && !take) {
+                                file_taken = directory;
+                                stack_DFS.Push(file_taken);    
+                                list_Simpul.Add(file_taken);
+                                take = true;
+                                break;
+                            }
                         }
-                    }
 
-                    foreach (string file in files) {    
-                        if (list_Simpul.IndexOf(file) == -1 && !take) {
-                            file_taken = file;
-                            stack_DFS.Push(file_taken);
-                            list_Simpul.Add(file_taken);
-                            take = true;
-                            break;
-                        }                
-                    }    
-                }
-                if (!take) {
-                    stack_DFS.Pop();
-                }                                 
-            } 
-        }         
-        // return list_Simpul;
-        }     
-        
+                        foreach (string file in files) {    
+                            if (list_Simpul.IndexOf(file) == -1 && !take) {
+                                file_taken = file;
+                                stack_DFS.Push(file_taken);
+                                list_Simpul.Add(file_taken);
+                                take = true;
+                                break;
+                            }                
+                        }    
+                    }
+                    if (!take) {
+                        stack_DFS.Pop();
+                    }                                 
+                } 
+            }
+        // if (found) {
+        //     Console.WriteLine(find_file + " ditemukan di ");
+        // } 
+        }    
+
+
         [STAThread]
         static void Main()
         {
@@ -121,4 +133,3 @@ namespace FolderCrawler
         }
     }
 }
-
