@@ -8,25 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using "Program.cs";
 
 namespace FolderCrawler
 {
     public partial class Main : Form
     {
         string dirChosen;
+        bool hasDir = false;
+        bool hasFilename = false;
+        bool findAllOccurence = false;
+
         public Main()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            radioButton2.Checked = true;
         }
 
         private void dirButton_Click(object sender, EventArgs e)
@@ -35,16 +31,40 @@ namespace FolderCrawler
             chooseFile.IsFolderPicker = true;
             if (chooseFile.ShowDialog() == CommonFileDialogResult.Ok) {
                 dirChosen = chooseFile.FileName;
-                if(dirChosen.Length > 32)
-                {
-                    directoryTextbox.Text = ".." + dirChosen.Substring(dirChosen.Length - 32);
-                }
+                label2.Text = dirChosen;
+                hasDir = true;
             }
         }
 
-        private void directoryTextbox_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            // does nothing, actually
+            if(textBox1.Text == "Input Filename" || textBox1.Text == "")
+            {
+                hasFilename = false;
+            }
+            else
+            {
+                hasFilename = true;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (findAllOccurence) { findAllOccurence = true; }
+            else { findAllOccurence = false;  }
+            checkBox1.Text = "Find All Occurence"; // temp fix anj gangerti lagi jancokkkk
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!hasDir)
+            {
+                MessageBox.Show("Folder Directory not chosen", "Error");
+            }
+            else if (!hasFilename)
+            {
+                MessageBox.Show("File Name not set", "Error");
+            }
         }
     }
 }
