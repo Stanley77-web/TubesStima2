@@ -10,3 +10,5 @@ FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.designer.runtimeconfig.js
 *.cache
 *.pdb
 FolderCrawling/obj/project.nuget.cache
+FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.assets.cache
+FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.csproj.AssemblyReference.cache
