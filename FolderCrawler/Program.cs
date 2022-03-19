@@ -19,51 +19,73 @@ namespace FolderCrawler
             this.find_file = find_file;
             this.root_path = root_path;
         }
-        public void BFS()
+        public static void BFS()
         {
+            //create a form 
+            System.Windows.Forms.Form form = new System.Windows.Forms.Form();
+            //create a viewer object 
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            //create a graph object 
+            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+
             Boolean found = false;
-            this.find_file = "hehe.txt";
-            Queue<string> queue_BFS = new Queue<string>();
+            string find_file = "hehe.txt";
+            Queue<(string, string)> queue_BFS = new();
+
             // Input path disini
-            this.root_path = @"D:\Video Recording";
-            string[] directories = Directory.GetDirectories(this.root_path);
-            string[] files = Directory.GetFiles(this.root_path);
+            string root_path = @"D:\Testing";
+            string[] directories = Directory.GetDirectories(root_path);
+            string[] files = Directory.GetFiles(root_path);
+            graph.AddNode(root_path);
+
             foreach (string directory in directories)
             {
-                queue_BFS.Enqueue(directory);
+                queue_BFS.Enqueue((root_path, directory));
             }
+
             foreach (string file in files)
             {
-                queue_BFS.Enqueue(file);
+                queue_BFS.Enqueue((root_path, file));
             }
 
             while (queue_BFS.Count > 0 && !found)
             {
-                string current_file = queue_BFS.Dequeue();
-                string file_name = Path.GetFileName(current_file);
-                
-                Console.WriteLine(file_name);
+                (string, string) current_queue = queue_BFS.Dequeue();
+                string parent_path = current_queue.Item1;
+                string current_path = current_queue.Item2;
+                string file_name = Path.GetFileName(current_path);
+                graph.AddNode(file_name);
+                graph.AddEdge(parent_path, file_name);
 
-                if (Directory.Exists(current_file))
+                if (Directory.Exists(current_path))
                 {
-                    directories = Directory.GetDirectories(current_file);
-                    files = Directory.GetFiles(current_file);
+                    directories = Directory.GetDirectories(current_path);
+                    files = Directory.GetFiles(current_path);
                     foreach (string directory in directories)
                     {
-                        queue_BFS.Enqueue(directory);
+                        queue_BFS.Enqueue((file_name, directory));
                     }
                     foreach (string file in files)
                     {
-                        queue_BFS.Enqueue(file);
+                        queue_BFS.Enqueue((file_name, file));
                     }
                 }
-                else if (file_name == this.find_file)
+                else if (file_name == find_file)
                 {
                     found = true;
                 }
             }
-            
+            //bind the graph to the viewer 
+            viewer.Graph = graph;
+            //associate the viewer with the form 
+            form.SuspendLayout();
+            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            form.Controls.Add(viewer);
+            form.ResumeLayout();
+            //show the form 
+            form.ShowDialog();
         }
+
 
         public void DFS() {
             Boolean found = false;
