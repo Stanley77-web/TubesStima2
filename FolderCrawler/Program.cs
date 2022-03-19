@@ -41,12 +41,10 @@ namespace FolderCrawler
             {
                 string current_file = queue_BFS.Dequeue();
                 string file_name = Path.GetFileName(current_file);
+                
                 Console.WriteLine(file_name);
-                if (file_name == this.find_file)
-                {
-                    found = true;
-                }
-                else if (Directory.Exists(current_file))
+
+                if (Directory.Exists(current_file))
                 {
                     directories = Directory.GetDirectories(current_file);
                     files = Directory.GetFiles(current_file);
@@ -58,6 +56,10 @@ namespace FolderCrawler
                     {
                         queue_BFS.Enqueue(file);
                     }
+                }
+                else if (file_name == this.find_file)
+                {
+                    found = true;
                 }
             }
             
