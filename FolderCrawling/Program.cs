@@ -13,11 +13,13 @@ namespace FolderCrawling
             this.find_file = null;
             this.root_path = null;
         }
+
         public Program(string find_file, string root_path)
         {
             this.find_file = find_file;
             this.root_path = root_path;
         }
+
         public static void BFS()
         {
             //create a form 
@@ -156,13 +158,15 @@ namespace FolderCrawling
             //     Console.WriteLine(find_file + " ditemukan di ");
             // } 
         }
+
         [STAThread]
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            //ApplicationConfiguration.Initialize();
+            //Application.Run(new Form1());
+            BFS();
         }
     }
 }
