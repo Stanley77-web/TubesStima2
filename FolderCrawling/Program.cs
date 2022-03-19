@@ -20,21 +20,22 @@ namespace FolderCrawling
             this.root_path = root_path;
         }
 
-        public static void BFS()
+        public Microsoft.Msagl.Drawing.Graph BFS()
         {
             //create a form 
             System.Windows.Forms.Form form = new System.Windows.Forms.Form();
             //create a viewer object 
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
             //create a graph object 
-            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("BFS Search");
+
 
             Boolean found = false;
-            string find_file = "hehe.txt";
+            //string find_file = "hehe.txt";
             Queue<(string, string)> queue_BFS = new();
 
             // Input path disini
-            string root_path = @"D:\Testing";
+            //string root_path = @"D:\Testing";
             string[] directories = Directory.GetDirectories(root_path);
             string[] files = Directory.GetFiles(root_path);
             graph.AddNode(root_path);
@@ -57,7 +58,6 @@ namespace FolderCrawling
                 string file_name = Path.GetFileName(current_path);
                 graph.AddNode(file_name);
                 graph.AddEdge(parent_path, file_name);
-
                 if (Directory.Exists(current_path))
                 {
                     directories = Directory.GetDirectories(current_path);
@@ -76,15 +76,17 @@ namespace FolderCrawling
                     found = true;
                 }
             }
-            //bind the graph to the viewer 
-            viewer.Graph = graph;
+            //bind the graph to the viewer
+            graph.Attr.BackgroundColor = new Microsoft.Msagl.Drawing.Color(byte.MaxValue, 192, 192, 192);
+            return graph;
+            //viewer.Graph = graph;
             //associate the viewer with the form 
-            form.SuspendLayout();
-            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            form.Controls.Add(viewer);
-            form.ResumeLayout();
+            //form.SuspendLayout();
+            //viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            //form.Controls.Add(viewer);
+            //form.ResumeLayout();
             //show the form 
-            form.ShowDialog();
+            //form.ShowDialog();
         }
 
 
@@ -93,11 +95,11 @@ namespace FolderCrawling
             Boolean found = false;
             Boolean take = false;
 
-            this.find_file = "Main.cs";
+            //this.find_file = "Main.cs";
             List<string> list_Simpul = new List<string>();
             Stack<string> stack_DFS = new Stack<string>();
 
-            this.root_path = @"E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\Test";
+            //this.root_path = @"E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\Test";
 
             stack_DFS.Push(this.root_path);
             list_Simpul.Add(this.root_path);
@@ -159,14 +161,15 @@ namespace FolderCrawling
             // } 
         }
 
-        [STAThread]
-        static void Main()
-        {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+        //[STAThread]
+        //static void Main()
+        //{
+         //To customize application configuration such as set high DPI settings or default font,
+         //see https://aka.ms/applicationconfiguration.
             //ApplicationConfiguration.Initialize();
-            //Application.Run(new Form1());
-            BFS();
-        }
+            //Application.Run(new Gui());
+            //BFS();
+        // }
+    
     }
 }

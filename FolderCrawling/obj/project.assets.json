@@ -115,24 +115,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jeremy\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\22tri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\TubesStima2\\FolderCrawling\\FolderCrawling.csproj",
+      "projectUniqueName": "C:\\Lenovo Temp\\IF Files\\Sem4\\Stima\\Tubes2\\FolderCrawling\\FolderCrawling.csproj",
       "projectName": "FolderCrawling",
-      "projectPath": "D:\\Github\\TubesStima2\\FolderCrawling\\FolderCrawling.csproj",
-      "packagesPath": "C:\\Users\\Jeremy\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\TubesStima2\\FolderCrawling\\obj\\",
+      "projectPath": "C:\\Lenovo Temp\\IF Files\\Sem4\\Stima\\Tubes2\\FolderCrawling\\FolderCrawling.csproj",
+      "packagesPath": "C:\\Users\\22tri\\.nuget\\packages\\",
+      "outputPath": "C:\\Lenovo Temp\\IF Files\\Sem4\\Stima\\Tubes2\\FolderCrawling\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jeremy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\22tri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

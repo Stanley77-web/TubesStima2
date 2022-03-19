@@ -1,0 +1,12 @@
+
+FolderCrawling/.vs/FolderCrawling/v17/.futdcache.v1
+FolderCrawling/.vs/FolderCrawling/v17/.suo
+FolderCrawling/bin/Debug/net6.0-windows/FolderCrawling.pdb
+*.cache
+FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.designer.runtimeconfig.json
+*.dll
+*.resources
+*.editorconfig
+*.cache
+*.pdb
+FolderCrawling/obj/project.nuget.cache
