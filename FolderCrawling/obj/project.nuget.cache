@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "tcaPJyvxnasjWDX9Nw524o8d5e9OPh+4DHNvFBSZtrWYsRHokf1zlv0aCpscjl+U+5QWYSb3YYnMPNeHzP82ig==",
+  "dgSpecHash": "drc7EfG0Bm8ixRix8jhTuM8g9+kbMj4YPWBo8ZJ+jaGHC2lWEPh+uJhlgvASpksXKJ/YfJC7gh+zyyMQCHyO/Q==",
   "success": true,
-  "projectFilePath": "C:\\Lenovo Temp\\IF Files\\Sem4\\Stima\\Tubes2\\FolderCrawling\\FolderCrawling.csproj",
+  "projectFilePath": "E:\\Stanley\\Semester 4\\Stima\\Tubes\\TubesStima2\\FolderCrawling\\FolderCrawling.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\22tri\\.nuget\\packages\\automaticgraphlayout\\1.1.11\\automaticgraphlayout.1.1.11.nupkg.sha512",
-    "C:\\Users\\22tri\\.nuget\\packages\\automaticgraphlayout.drawing\\1.1.11\\automaticgraphlayout.drawing.1.1.11.nupkg.sha512",
-    "C:\\Users\\22tri\\.nuget\\packages\\automaticgraphlayout.graphviewergdi\\1.1.11\\automaticgraphlayout.graphviewergdi.1.1.11.nupkg.sha512",
-    "C:\\Users\\22tri\\.nuget\\packages\\automaticgraphlayout.wpfgraphcontrol\\1.1.11\\automaticgraphlayout.wpfgraphcontrol.1.1.11.nupkg.sha512"
+    "C:\\Users\\acer\\.nuget\\packages\\automaticgraphlayout\\1.1.11\\automaticgraphlayout.1.1.11.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\automaticgraphlayout.drawing\\1.1.11\\automaticgraphlayout.drawing.1.1.11.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\automaticgraphlayout.graphviewergdi\\1.1.11\\automaticgraphlayout.graphviewergdi.1.1.11.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\automaticgraphlayout.wpfgraphcontrol\\1.1.11\\automaticgraphlayout.wpfgraphcontrol.1.1.11.nupkg.sha512"
   ],
   "logs": []
 }

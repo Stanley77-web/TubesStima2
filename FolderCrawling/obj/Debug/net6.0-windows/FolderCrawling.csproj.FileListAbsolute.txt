@@ -42,3 +42,25 @@ C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawling\obj\Debug\net6.0-window
 C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.genruntimeconfig.cache
 C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawling\obj\Debug\net6.0-windows\ref\FolderCrawling.dll
 C:\Lenovo Temp\IF Files\Sem4\Stima\Tubes2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.Gui.resources
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.csproj.AssemblyReference.cache
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.Gui.resources
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.csproj.GenerateResource.cache
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.GeneratedMSBuildEditorConfig.editorconfig
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.AssemblyInfoInputs.cache
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.AssemblyInfo.cs
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.csproj.CoreCompileInputs.cache
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\refint\FolderCrawling.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.pdb
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\FolderCrawling.exe
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\FolderCrawling.deps.json
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\FolderCrawling.runtimeconfig.json
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\FolderCrawling.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\FolderCrawling.pdb
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\AutomaticGraphLayout.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\AutomaticGraphLayout.Drawing.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\Microsoft.Msagl.GraphViewerGdi.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-windows\Microsoft.Msagl.WpfGraphControl.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.csproj.CopyComplete
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.genruntimeconfig.cache
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\ref\FolderCrawling.dll

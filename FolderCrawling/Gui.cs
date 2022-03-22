@@ -65,8 +65,7 @@ namespace FolderCrawling {
                 if (radioButton2.Checked) {
                     gViewer1.Graph = prog.BFS(checkBox1.Checked);
                 } else if (radioButton3.Checked) {
-                    prog.DFS();
-                    gViewer1.Graph = prog.DFS();
+                    gViewer1.Graph = prog.DFS(checkBox1.Checked);
                 }
                 label4.Text = prog.elapsedTime();
                 this.showResultPath(prog.path_list);

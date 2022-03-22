@@ -19,96 +19,8 @@ namespace FolderCrawling {
             this.path_list = new();
             this.programRunTime.Restart();
         }
-        public Microsoft.Msagl.Drawing.Graph BFS(bool find_all_occurence) {
-            this.programRunTime.Start();
-            Graph graph = new Graph("graph");
-            Boolean found = false;
-            Dictionary<string, Microsoft.Msagl.Drawing.Edge> dict_BFS = new();
-            Dictionary<string, int> file_count = new();
-            Queue<(string, string)> queue_BFS = new();
-            Queue<(string, string)> queue_graph = new();
 
-            string[] directories = Directory.GetDirectories(root_path);
-            string[] files = Directory.GetFiles(root_path);
-            this.path_list.Clear();
-            foreach (string directory in directories) {
-                queue_BFS.Enqueue((root_path, directory));
-            }
-
-            foreach (string file in files) {
-                queue_BFS.Enqueue((root_path, file));
-            }
-
-            while (queue_BFS.Count > 0 && !found) {
-                (string, string) current_queue = queue_BFS.Dequeue();
-                string parent_path = current_queue.Item1;
-                string current_path = current_queue.Item2;
-                string file_name = Path.GetFileName(current_path);
-                if (file_name != find_file) {
-                    if (!file_count.ContainsKey(file_name)) {
-                        file_count[file_name] = 0;
-                    } else {
-                        file_count[file_name]++;
-                        file_name += " (" + file_count[file_name] + ")";
-                    }
-                    if (Directory.Exists(current_path)) {
-                        directories = Directory.GetDirectories(current_path);
-                        files = Directory.GetFiles(current_path);
-                        foreach (string directory in directories) {
-                            queue_BFS.Enqueue((file_name, directory));
-                        }
-                        foreach (string file in files) {
-                            queue_BFS.Enqueue((file_name, file));
-                        }
-                    }
-                } else {
-                    if (!find_all_occurence) {
-                        found = true;
-                    }
-                }
-                queue_graph.Enqueue((parent_path, file_name));
-                // stopwatch berhenti
-                this.programRunTime.Stop();
-            }
-
-            graph.AddNode(root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-            while (queue_graph.Count > 0) {
-                (string, string) current_queue = queue_graph.Dequeue();
-                string parent_path = current_queue.Item1;
-                string current_path = current_queue.Item2;
-                string file_name = Path.GetFileName(current_path);
-                if (file_name != find_file) {
-                    var node = graph.AddNode(file_name);
-                    var edge = graph.AddEdge(parent_path, file_name);
-                    if (!found) {
-                        node.Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                        edge.Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                    } else {
-                        node.Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                        edge.Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    }
-                    dict_BFS[file_name] = edge;
-                } else {
-                    graph.AddNode(file_name).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                    var edge = graph.AddEdge(parent_path, file_name);
-                    edge.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                    edge.SourceNode.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                    while (dict_BFS.ContainsKey(parent_path)) {
-                        dict_BFS[parent_path].Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                        dict_BFS[parent_path].SourceNode.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                        parent_path = dict_BFS[parent_path].Source;
-                    }
-                    this.path_list.Add(current_path);
-                    if (!find_all_occurence) {
-                        found = true;
-                    }
-                }
-            }
-            return graph;
-        }
-
-
-        public Graph DFS() {
+        public Graph BFS(bool find_all_occurence) {
             Graph graph = new Graph("graph");
             Boolean found = false;
             Dictionary<string, Edge> dict_BFS = new();
@@ -210,7 +122,6 @@ namespace FolderCrawling {
             stack_DFS.Push(root_path);
             graph.AddNode(root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
             list_vertice.Add(root_path);
-            int n = 0, m = 0;
             // start stopwatch
             while (stack_DFS.Count > 0) {
                 Boolean take = false;
@@ -221,21 +132,20 @@ namespace FolderCrawling {
                         found = true;
                         // stop stopwatch
                     }
-                    if (!found) {
-                        Node node = graph.FindNode(file_name);
-                        string parent_file_name = node.Id;
-                        node.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                        do {
-                            foreach (Edge elmt in list_edge) {
-                                if (elmt.TargetNode.Id == parent_file_name) {
-                                    string children_file_name = parent_file_name;
-                                    parent_file_name = elmt.SourceNode.Id;
-                                    elmt.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                                    elmt.SourceNode.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                                }
+
+                    Node node = graph.FindNode(file_name);
+                    string parent_file_name = node.Id;
+                    node.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
+                    do {
+                        foreach (Edge elmt in list_edge) {
+                            if (elmt.TargetNode.Id == parent_file_name) {
+                                string children_file_name = parent_file_name;
+                                parent_file_name = elmt.SourceNode.Id;
+                                elmt.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
+                                elmt.SourceNode.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
                             }
-                        } while (parent_file_name != root_path);
-                    }
+                        }
+                    } while (parent_file_name != root_path);
                 } else {
                 if (Directory.Exists(current_path)) {
                     string[] directories = Directory.GetDirectories(current_path);
@@ -299,7 +209,7 @@ namespace FolderCrawling {
                 }
             }
             // stop stopwatch
-            view(graph);
+            // view(graph);
             return graph;
         }
 
