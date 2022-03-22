@@ -35,11 +35,16 @@ namespace FolderCrawling {
 
             while (queue_BFS.Count > 0 && !found) {
                 (string, string) current_queue = queue_BFS.Dequeue();
-                queue_graph.Enqueue(current_queue);
                 string parent_path = current_queue.Item1;
                 string current_path = current_queue.Item2;
                 string file_name = Path.GetFileName(current_path);
                 if (file_name != find_file) {
+                    if (!file_count.ContainsKey(file_name)) {
+                        file_count[file_name] = 0;
+                    } else {
+                        file_count[file_name]++;
+                        file_name += " (" + file_count[file_name] + ")";
+                    }
                     if (Directory.Exists(current_path)) {
                         directories = Directory.GetDirectories(current_path);
                         files = Directory.GetFiles(current_path);
@@ -55,6 +60,7 @@ namespace FolderCrawling {
                         found = true;
                     }
                 }
+                queue_graph.Enqueue((parent_path, file_name));
                 // stopwatch berhenti
             }
 
@@ -65,14 +71,6 @@ namespace FolderCrawling {
                 string current_path = current_queue.Item2;
                 string file_name = Path.GetFileName(current_path);
                 if (file_name != find_file) {
-                    if (graph.FindNode(file_name) != null) {
-                        if (!file_count.ContainsKey(file_name)) {
-                            file_count[file_name] = 1;
-                        } else {
-                            file_count[file_name]++;
-                        }
-                        file_name += " (" + file_count[file_name] + ")";
-                    }
                     var node = graph.AddNode(file_name);
                     var edge = graph.AddEdge(parent_path, file_name);
                     if (!found) {
