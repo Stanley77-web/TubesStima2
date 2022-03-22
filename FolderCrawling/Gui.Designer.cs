@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.gViewer1 = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +65,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.MinimumSize = new System.Drawing.Size(361, 1017);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(361, 1017);
             this.panel1.TabIndex = 0;
@@ -271,12 +274,37 @@
             this.gViewer1.ZoomF = 1D;
             this.gViewer1.ZoomWindowThreshold = 0.05D;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.Gray;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Open Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.ForeColor = System.Drawing.Color.White;
+            this.richTextBox1.Location = new System.Drawing.Point(487, 741);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(972, 285);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(361, 741);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(128, 276);
+            this.panel3.TabIndex = 4;
+            // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1459, 1017);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.gViewer1);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel1);
@@ -307,8 +335,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button button1;
-        private Microsoft.Msagl.GraphViewerGdi.GViewer gViewer1;
         private Label label4;
+        private Microsoft.Msagl.GraphViewerGdi.GViewer gViewer1;
+        private RichTextBox richTextBox1;
+        private Panel panel3;
     }
 }
 

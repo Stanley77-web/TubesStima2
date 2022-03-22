@@ -9,6 +9,7 @@ FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.designer.runtimeconfig.js
 *.editorconfig
 *.cache
 *.pdb
+.ionide
 FolderCrawling/obj/project.nuget.cache
 FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.assets.cache
 FolderCrawling/obj/Debug/net6.0-windows/FolderCrawling.csproj.AssemblyReference.cache
