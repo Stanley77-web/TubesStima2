@@ -1,6 +1,5 @@
 using Microsoft.Msagl.GraphViewerGdi;
 using Microsoft.Msagl.Drawing;
-using System.Windows.Forms;
 
 namespace FolderCrawling {
     internal class Program {
@@ -9,12 +8,13 @@ namespace FolderCrawling {
         /// </summary>
         private string find_file { get; set; }
         private string root_path { get; set; }
+        private List<string> path_list { get; set; }
         public Program(string find_file, string root_path) {
             this.find_file = find_file;
             this.root_path = root_path;
+            this.path_list = new();
         }
-
-        public Microsoft.Msagl.Drawing.Graph BFS() {
+        public Microsoft.Msagl.Drawing.Graph BFS(bool find_all_occurence) {
             Graph graph = new Graph("graph");
             Boolean found = false;
             Dictionary<string, Microsoft.Msagl.Drawing.Edge> dict_BFS = new();
@@ -24,7 +24,7 @@ namespace FolderCrawling {
 
             string[] directories = Directory.GetDirectories(root_path);
             string[] files = Directory.GetFiles(root_path);
-
+            this.path_list.Clear();
             foreach (string directory in directories) {
                 queue_BFS.Enqueue((root_path, directory));
             }
@@ -33,7 +33,7 @@ namespace FolderCrawling {
                 queue_BFS.Enqueue((root_path, file));
             }
 
-            while (queue_BFS.Count > 0) {
+            while (queue_BFS.Count > 0 && !found) {
                 (string, string) current_queue = queue_BFS.Dequeue();
                 queue_graph.Enqueue(current_queue);
                 string parent_path = current_queue.Item1;
@@ -51,8 +51,11 @@ namespace FolderCrawling {
                         }
                     }
                 } else {
-                    // stop time watch
+                    if (!find_all_occurence) {
+                        found = true;
+                    }
                 }
+                // stopwatch berhenti
             }
 
             graph.AddNode(root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
@@ -90,11 +93,13 @@ namespace FolderCrawling {
                         dict_BFS[parent_path].SourceNode.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
                         parent_path = dict_BFS[parent_path].Source;
                     }
-                    found = true;
+                    this.path_list.Add(current_path);
+                    if (!find_all_occurence) {
+                        found = true;
+                    }
                 }
             }
             return graph;
-
         }
 
 
