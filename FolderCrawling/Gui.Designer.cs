@@ -1,8 +1,4 @@
-﻿using System.Windows.Forms;
-using System.ComponentModel;
-using Microsoft.Msagl.GraphViewerGdi;
-
-namespace FolderCrawling
+﻿namespace FolderCrawling
 {
     partial class Gui
     {

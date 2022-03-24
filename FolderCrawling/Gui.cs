@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Msagl.GraphViewerGdi;
-using Microsoft.Msagl.Drawing;
+﻿using Microsoft.Msagl.Drawing;
 
 namespace FolderCrawling {
     public partial class Gui : Form {
@@ -64,11 +54,13 @@ namespace FolderCrawling {
                 gViewer1.OutsideAreaBrush = Brushes.Silver;
                 gViewer1.PanButtonPressed = true;
                 prog = new Program(textBox1.Text, dirChosen);
+                bool findAllOccurence = checkBox1.Checked;
                 if (radioButton2.Checked) {
-                    gViewer1.Graph = prog.BFS(checkBox1.Checked);
+                    prog.BFS(findAllOccurence);
+                    animateGraph(findAllOccurence);
                 } else if (radioButton3.Checked) {
-                    prog.DFS(checkBox1.Checked);
-                    animateGraph(checkBox1.Checked);
+                    prog.DFS(findAllOccurence);
+                    animateGraph(findAllOccurence);
                 }
                 label4.Text = prog.elapsedTime();
                 this.showResultPath(prog.path_list);
@@ -81,7 +73,7 @@ namespace FolderCrawling {
             List<Edge> list_edge = new();
             graph.AddNode(prog.root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
             gViewer1.Graph = graph;
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
             foreach ((string,string) elmt in prog.list_graph) {
                 string parent_file_name = elmt.Item1;
                 string node_id_parent = parent_file_name;
@@ -151,7 +143,7 @@ namespace FolderCrawling {
                     list_edge.Add(edge);
                 };
                 gViewer1.Graph = graph;
-                Thread.Sleep(1000);
+                // Thread.Sleep(1000);
             }
         }
 
