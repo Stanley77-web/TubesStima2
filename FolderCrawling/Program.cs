@@ -10,8 +10,8 @@ namespace FolderCrawling {
         public string find_file { get; private set; }
         public string root_path { get; private set; }
         public List<string> path_list { get; private set; }
-        public Dictionary<string, int> file_count {get; private set;}
-        public List<(string,string)> list_graph { get; private set; }
+        public Dictionary<string, int> file_count { get; private set; }
+        public List<(string, string)> list_graph { get; private set; }
         private DateTime temp = new DateTime();
         private Stopwatch programRunTime = new Stopwatch();
 
@@ -20,7 +20,7 @@ namespace FolderCrawling {
             this.root_path = root_path;
             this.path_list = new();
             this.list_graph = new();
-            this.file_count = new();      
+            this.file_count = new();
             this.programRunTime.Restart();
         }
 
@@ -49,13 +49,14 @@ namespace FolderCrawling {
                 string parent_path = current_queue.Item1;
                 string current_path = current_queue.Item2;
                 string file_name = Path.GetFileName(current_path);
+                string temp_name = file_name;
+                if (!file_count.ContainsKey(file_name)) {
+                    file_count[file_name] = 0;
+                } else {
+                    file_count[file_name]++;
+                    file_name += "->" + file_count[file_name];
+                }
                 if (file_name != find_file) {
-                    if (!file_count.ContainsKey(file_name)) {
-                        file_count[file_name] = 0;
-                    } else {
-                        file_count[file_name]++;
-                        file_name += "->" + file_count[file_name];
-                    }
                     if (Directory.Exists(current_path)) {
                         directories = Directory.GetDirectories(current_path);
                         files = Directory.GetFiles(current_path);
@@ -67,16 +68,9 @@ namespace FolderCrawling {
                         }
                     }
                 } else {
-                    if (!file_count.ContainsKey(file_name)) {
-                        file_count[file_name] = 0;
-                    } else {
-                        file_count[file_name]++;
-                        file_name += "->" + file_count[file_name];
-                    }
                     if (!found) {
                         this.path_list.Add(Directory.GetParent(current_path).FullName);
                     }
-
                     if (!find_all_occurence && !found) {
                         found = true;
                         this.programRunTime.Stop();
@@ -89,7 +83,7 @@ namespace FolderCrawling {
             }
         }
 
-       public void DFS(bool find_all_occurence) {
+        public void DFS(bool find_all_occurence) {
             Boolean found = false;
 
             this.path_list.Clear();
@@ -99,9 +93,9 @@ namespace FolderCrawling {
             List<string> list_vertice = new List<string>();
             Stack<string> stack_DFS = new Stack<string>();
 
-            stack_DFS.Push(root_path);            
+            stack_DFS.Push(root_path);
             list_vertice.Add(root_path);
-            file_count.Add(root_path,0);
+            file_count.Add(root_path, 0);
 
             this.programRunTime.Start();
             while (stack_DFS.Count > 0) {
@@ -117,62 +111,62 @@ namespace FolderCrawling {
                         this.programRunTime.Stop();
                     }
                 } else {
-                if (Directory.Exists(current_path)) {
-                    string[] directories = Directory.GetDirectories(current_path);
-                    string[] files = Directory.GetFiles(current_path);
+                    if (Directory.Exists(current_path)) {
+                        string[] directories = Directory.GetDirectories(current_path);
+                        string[] files = Directory.GetFiles(current_path);
 
-                    string parent_file_name = 
-                        current_path == root_path ? 
-                            current_path :
-                            Path.GetFileName(current_path);
+                        string parent_file_name =
+                            current_path == root_path ?
+                                current_path :
+                                Path.GetFileName(current_path);
 
-                    string children_file_name = "";
-                    foreach (string directory in directories) {
-                        if (list_vertice.IndexOf(directory) == -1 && !take) { 
-                            children_file_name = Path.GetFileName(directory);
-                            stack_DFS.Push(directory);
-                            list_vertice.Add(directory);
-                            take = true;
+                        string children_file_name = "";
+                        foreach (string directory in directories) {
+                            if (list_vertice.IndexOf(directory) == -1 && !take) {
+                                children_file_name = Path.GetFileName(directory);
+                                stack_DFS.Push(directory);
+                                list_vertice.Add(directory);
+                                take = true;
+                            }
                         }
-                    }
 
-                    foreach (string file in files) {
-                        if (list_vertice.IndexOf(file) == -1 && !take) {
-                            children_file_name = Path.GetFileName(file);
-                            stack_DFS.Push(file);
-                            list_vertice.Add(file);
-                            take = true;
+                        foreach (string file in files) {
+                            if (list_vertice.IndexOf(file) == -1 && !take) {
+                                children_file_name = Path.GetFileName(file);
+                                stack_DFS.Push(file);
+                                list_vertice.Add(file);
+                                take = true;
+                            }
                         }
-                    }
                         if (take) {
-                            parent_file_name = 
-                                file_count[parent_file_name] == 0 ? 
+                            parent_file_name =
+                                file_count[parent_file_name] == 0 ?
                                     parent_file_name :
-                                    parent_file_name +  "->" + file_count[parent_file_name].ToString();
-                            
-                            file_count[children_file_name] = 
-                                !file_count.ContainsKey(children_file_name) ? 
-                                    0 :
-                                    file_count[children_file_name] + 1; 
+                                    parent_file_name + "->" + file_count[parent_file_name].ToString();
 
-                            children_file_name = 
-                                file_count[children_file_name] == 0 ? 
+                            file_count[children_file_name] =
+                                !file_count.ContainsKey(children_file_name) ?
+                                    0 :
+                                    file_count[children_file_name] + 1;
+
+                            children_file_name =
+                                file_count[children_file_name] == 0 ?
                                     children_file_name :
-                                    children_file_name +  "->" + file_count[children_file_name].ToString();
-                                    
-                            list_graph.Add((parent_file_name,children_file_name)); 
+                                    children_file_name + "->" + file_count[children_file_name].ToString();
+
+                            list_graph.Add((parent_file_name, children_file_name));
                         }
                     }
                 }
                 if (!take) {
-                stack_DFS.Pop();
+                    stack_DFS.Pop();
                 }
             }
             if (this.programRunTime.IsRunning) {
                 this.programRunTime.Stop();
             }
         }
-        public string elapsedTime(){
+        public string elapsedTime() {
             TimeSpan ts = programRunTime.Elapsed;
             string elapsedTime = String.Format("{0:00}.{1:000} seconds", ts.Seconds, ts.Milliseconds);
             return elapsedTime;
