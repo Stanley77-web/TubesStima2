@@ -47,6 +47,8 @@ namespace FolderCrawling {
         }
 
         private async void button1_Click(object sender, EventArgs e) {
+            this.richTextBox1.Text = "";
+            this.label4.Text = "";
             if (!hasDir) {
                 MessageBox.Show("Folder Directory not chosen", "Error");
             } else if (!hasFilename) {
