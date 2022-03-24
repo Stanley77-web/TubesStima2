@@ -156,7 +156,7 @@ namespace FolderCrawling {
                 res += "None found\n";
             }
             for (int i = 0; i < resultPath.Count(); i++) {
-                res += (i + 1) + ". file://" + "\n";
+                res += (i + 1) + ". file://" + resultPath[i] + "\n";
             }
             this.richTextBox1.Text = res;
         }
