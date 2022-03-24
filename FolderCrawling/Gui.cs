@@ -46,37 +46,56 @@ namespace FolderCrawling {
             checkBox1.Text = "Find All Occurence";
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            if (!hasDir) {
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.Text = "";
+            this.label4.Text = "";
+            if (!hasDir)
+            {
                 MessageBox.Show("Folder Directory not chosen", "Error");
-            } else if (!hasFilename) {
+            }
+            else if (!hasFilename)
+            {
                 MessageBox.Show("File Name not set", "Error");
-            } else {
+            }
+            else
+            {
                 gViewer1.OutsideAreaBrush = Brushes.White;
                 gViewer1.PanButtonPressed = true;
                 prog = new Program(textBox1.Text, dirChosen);
                 bool findAllOccurence = checkBox1.Checked;
-                if (radioButton2.Checked) {
+                if (radioButton2.Checked)
+                {
                     prog.BFS(findAllOccurence);
-                    animateGraph(findAllOccurence);
-                } else if (radioButton3.Checked) {
+                }
+                else if (radioButton3.Checked)
+                {
                     prog.DFS(findAllOccurence);
-                    animateGraph(findAllOccurence);
+                }
+                await animateGraph(findAllOccurence);
+                if (prog.path_list.Count == 0)
+                {
+                    MessageBox.Show("File not found", "Error");
                 }
                 label4.Text = prog.elapsedTime();
                 this.showResultPath(prog.path_list);
             }
         }
 
-        private async void animateGraph(Boolean find_all_occurence) {
+
+        private async Task animateGraph(Boolean find_all_occurence)
+        {
             Boolean found = false;
             Graph graph = new Graph("Folder Crawling");
             List<Edge> list_edge = new();
             graph.AddNode(prog.root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-
-            gViewer1.Graph = graph;
-            // Thread.Sleep(1000);
-            foreach ((string, string) elmt in prog.list_graph) {
+            foreach ((string, string) elmt in prog.list_graph)
+            {
+                if (!found)
+                {
+                    gViewer1.Graph = graph;
+                    await Task.Delay(250);
+                }
                 string parent_file_name = elmt.Item1;
                 string node_id_parent = parent_file_name;
                 string children_file_name = elmt.Item2;
@@ -84,17 +103,20 @@ namespace FolderCrawling {
                 string[] str_parent = parent_file_name.Split("->");
                 string[] str_childern = children_file_name.Split("->");
 
-                if (str_parent.Length > 1) {
+                if (str_parent.Length > 1)
+                {
                     parent_file_name = str_parent[0];
                     node_id_parent = str_parent[0] + str_parent[1];
                 }
 
-                if (str_childern.Length > 1) {
+                if (str_childern.Length > 1)
+                {
                     children_file_name = str_childern[0];
                     node_id_children = str_childern[0] + str_childern[1];
                 }
 
-                if (children_file_name == prog.find_file) {
+                if (children_file_name == prog.find_file)
+                {
 
                     Node node_children = new Node(children_file_name);
                     node_children.Id = node_id_children;
@@ -112,11 +134,15 @@ namespace FolderCrawling {
                             Microsoft.Msagl.Drawing.Color.Black;
                     list_edge.Add(edge);
 
-                    if (!found) {
+                    if (!found)
+                    {
                         string check_parent = node_id_children;
-                        do {
-                            foreach (Edge pair in list_edge) {
-                                if (pair.TargetNode.Id == check_parent) {
+                        do
+                        {
+                            foreach (Edge pair in list_edge)
+                            {
+                                if (pair.TargetNode.Id == check_parent)
+                                {
                                     string check_children = check_parent;
                                     check_parent = pair.SourceNode.Id;
                                     pair.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
@@ -125,10 +151,20 @@ namespace FolderCrawling {
                             }
                         } while (check_parent != prog.root_path);
                     }
-                    if (!find_all_occurence && !found) {
+
+                    if (!found)
+                    {
+                        gViewer1.Graph = graph;
+                        await Task.Delay(250);
+                    }
+
+                    if (!find_all_occurence && !found)
+                    {
                         found = true;
                     }
-                } else {
+                }
+                else
+                {
                     Node node = new Node(children_file_name);
                     node.Id = node_id_children;
                     node.Attr.Color =
@@ -144,14 +180,14 @@ namespace FolderCrawling {
                             Microsoft.Msagl.Drawing.Color.Black;
                     list_edge.Add(edge);
                 };
-                gViewer1.Graph = graph;
-                await Task.Delay(50);
+
             }
+            gViewer1.Graph = graph;
         }
 
         private void showResultPath(List<string> resultPath) {
             string res = "";
-            res += "\n\nPath File:\n";
+            res += "\nPath File:\n";
             if (resultPath.Count() == 0) {
                 res += "None found\n";
             }

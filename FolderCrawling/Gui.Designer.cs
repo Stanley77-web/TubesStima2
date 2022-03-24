@@ -45,17 +45,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(-17, -17);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton1.Location = new System.Drawing.Point(-19, -23);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(94, 19);
+            this.radioButton1.Size = new System.Drawing.Size(117, 24);
             this.radioButton1.TabIndex = 1;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "radioButton1";
@@ -78,9 +79,8 @@
             this.gViewer1.InsertingEdge = false;
             this.gViewer1.LayoutAlgorithmSettingsButtonVisible = true;
             this.gViewer1.LayoutEditingEnabled = false;
-            this.gViewer1.Location = new System.Drawing.Point(316, 0);
+            this.gViewer1.Location = new System.Drawing.Point(361, 0);
             this.gViewer1.LooseOffsetForRouting = 0.25D;
-            this.gViewer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gViewer1.MouseHitDistance = 0.05D;
             this.gViewer1.Name = "gViewer1";
             this.gViewer1.NavigationVisible = true;
@@ -93,7 +93,7 @@
             this.gViewer1.SaveButtonVisible = true;
             this.gViewer1.SaveGraphButtonVisible = true;
             this.gViewer1.SaveInVectorFormatEnabled = true;
-            this.gViewer1.Size = new System.Drawing.Size(961, 578);
+            this.gViewer1.Size = new System.Drawing.Size(1098, 771);
             this.gViewer1.TabIndex = 2;
             this.gViewer1.TightOffsetForRouting = 0.125D;
             this.gViewer1.ToolBarIsVisible = true;
@@ -105,16 +105,18 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Gray;
+            this.richTextBox1.BackColor = System.Drawing.Color.DimGray;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(27, -34);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(44, 0, 0, 0);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.richTextBox1.ShortcutsEnabled = false;
-            this.richTextBox1.Size = new System.Drawing.Size(934, 219);
+            this.richTextBox1.Size = new System.Drawing.Size(1098, 212);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
@@ -125,35 +127,33 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 136);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(8, 181);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 37);
+            this.label1.Size = new System.Drawing.Size(295, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "Folder Crawler";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(11, 195);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(13, 260);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(293, 9);
+            this.panel2.Size = new System.Drawing.Size(335, 12);
             this.panel2.TabIndex = 1;
             // 
             // dirButton
             // 
-            this.dirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.dirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.dirButton.FlatAppearance.BorderSize = 0;
             this.dirButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dirButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dirButton.Image = ((System.Drawing.Image)(resources.GetObject("dirButton.Image")));
             this.dirButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dirButton.Location = new System.Drawing.Point(0, 254);
-            this.dirButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dirButton.Location = new System.Drawing.Point(0, 345);
             this.dirButton.Name = "dirButton";
-            this.dirButton.Size = new System.Drawing.Size(316, 49);
+            this.dirButton.Size = new System.Drawing.Size(361, 42);
             this.dirButton.TabIndex = 3;
             this.dirButton.TabStop = false;
             this.dirButton.Text = "Choose Directory";
@@ -167,28 +167,28 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(8, 304);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.MaximumSize = new System.Drawing.Size(305, 47);
+            this.label2.Location = new System.Drawing.Point(9, 405);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.MaximumSize = new System.Drawing.Size(349, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 15);
+            this.label2.Size = new System.Drawing.Size(130, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "No Folder Chosen";
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(0, 356);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Location = new System.Drawing.Point(8, 9);
             this.textBox1.MaxLength = 128;
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(316, 20);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBox1.Size = new System.Drawing.Size(350, 21);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "Input Filename";
+            this.textBox1.WordWrap = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // checkBox1
@@ -196,10 +196,9 @@
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(11, 422);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox1.Location = new System.Drawing.Point(13, 563);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(179, 30);
+            this.checkBox1.Size = new System.Drawing.Size(205, 40);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Find All Occurence";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -210,10 +209,9 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(11, 494);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton2.Location = new System.Drawing.Point(13, 659);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(55, 22);
+            this.radioButton2.Size = new System.Drawing.Size(67, 28);
             this.radioButton2.TabIndex = 7;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "BFS";
@@ -224,10 +222,10 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton3.ForeColor = System.Drawing.Color.White;
-            this.radioButton3.Location = new System.Drawing.Point(11, 530);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButton3.Location = new System.Drawing.Point(13, 707);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(5);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(56, 22);
+            this.radioButton3.Size = new System.Drawing.Size(68, 28);
             this.radioButton3.TabIndex = 8;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "DFS";
@@ -238,16 +236,16 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(7, 466);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(8, 621);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 18);
+            this.label3.Size = new System.Drawing.Size(189, 24);
             this.label3.TabIndex = 9;
             this.label3.Text = "SEARCH METHOD";
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.button1.FlatAppearance.BorderSize = 0;
@@ -255,10 +253,10 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(0, 621);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(0, 828);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(316, 86);
+            this.button1.Size = new System.Drawing.Size(361, 115);
             this.button1.TabIndex = 10;
             this.button1.Text = "START";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -271,9 +269,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(11, 578);
+            this.label4.Location = new System.Drawing.Point(13, 771);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 17);
+            this.label4.Size = new System.Drawing.Size(0, 20);
             this.label4.TabIndex = 3;
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -284,54 +282,65 @@
             this.panel3.BackColor = System.Drawing.Color.Gray;
             this.panel3.Controls.Add(this.richTextBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(316, 578);
+            this.panel3.Location = new System.Drawing.Point(361, 771);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(961, 159);
+            this.panel3.Size = new System.Drawing.Size(1098, 212);
             this.panel3.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dirButton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.MinimumSize = new System.Drawing.Size(316, 763);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
+            this.panel1.MinimumSize = new System.Drawing.Size(361, 1017);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(316, 763);
+            this.panel1.Size = new System.Drawing.Size(361, 1017);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Location = new System.Drawing.Point(0, 479);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(361, 41);
+            this.panel4.TabIndex = 11;
+            // 
             // Gui
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1277, 737);
+            this.ClientSize = new System.Drawing.Size(1459, 983);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.gViewer1);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1196, 554);
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.MinimumSize = new System.Drawing.Size(1364, 723);
             this.Name = "Gui";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  ";
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,6 +363,7 @@
         private Label label4;
         private Panel panel3;
         private Panel panel1;
+        private Panel panel4;
     }
 }
 
