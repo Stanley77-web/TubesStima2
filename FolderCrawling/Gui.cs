@@ -42,7 +42,7 @@ namespace FolderCrawling {
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
             if (findAllOccurence) { findAllOccurence = true; } else { findAllOccurence = false; }
-            checkBox1.Text = "Find All Occurence"; // temp fix anj gangerti lagi jancokkkk
+            checkBox1.Text = "Find All Occurence"; 
         }
 
         private void button1_Click(object sender, EventArgs e) {
