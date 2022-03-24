@@ -46,7 +46,7 @@ namespace FolderCrawling {
             checkBox1.Text = "Find All Occurence"; 
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private async void button1_Click(object sender, EventArgs e) {
             if (!hasDir) {
                 MessageBox.Show("Folder Directory not chosen", "Error");
             } else if (!hasFilename) {
@@ -58,24 +58,28 @@ namespace FolderCrawling {
                 bool findAllOccurence = checkBox1.Checked;
                 if (radioButton2.Checked) {
                     prog.BFS(findAllOccurence);
-                    animateGraph(findAllOccurence);
                 } else if (radioButton3.Checked) {
                     prog.DFS(findAllOccurence);
-                    animateGraph(findAllOccurence);
+                }
+                await animateGraph(findAllOccurence);
+                if (prog.path_list.Count == 0) {
+                    MessageBox.Show("File not found", "Error");
                 }
                 label4.Text = prog.elapsedTime();
                 this.showResultPath(prog.path_list);
             }
         }
 
-        private async void animateGraph(Boolean find_all_occurence) {
+        private async Task animateGraph(Boolean find_all_occurence) {
             Boolean found = false;
             Graph graph = new Graph("Folder Crawling");
             List<Edge> list_edge = new();
             graph.AddNode(prog.root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-            gViewer1.Graph = graph;
-            // Thread.Sleep(1000);
             foreach ((string,string) elmt in prog.list_graph) {
+                if (!found) {
+                    gViewer1.Graph = graph;
+                    await Task.Delay(500);
+                }
                 string parent_file_name = elmt.Item1;
                 string node_id_parent = parent_file_name;
                 string children_file_name = elmt.Item2;
@@ -124,6 +128,12 @@ namespace FolderCrawling {
                             }
                         } while (check_parent != prog.root_path);
                     }
+
+                    if (!found) {
+                        gViewer1.Graph = graph;
+                        await Task.Delay(500);
+                    }
+
                     if (!find_all_occurence && !found) {
                         found = true;
                     }
@@ -144,9 +154,9 @@ namespace FolderCrawling {
                             Microsoft.Msagl.Drawing.Color.Black;
                     list_edge.Add(edge);
                 };
-                gViewer1.Graph = graph;
-                await Task.Delay(50);
+
             }
+            gViewer1.Graph = graph;
         }
 
         private void showResultPath(List<string> resultPath)
@@ -159,7 +169,7 @@ namespace FolderCrawling {
             }
             for(int i = 0; i < resultPath.Count(); i++)
             {
-                res += (i + 1) + ". file://" + resultPath[i].Replace(" ", "%20") + "\n";
+                res += (i + 1) + ". file://" + resultPath[i] + "\n";
             }
             this.richTextBox1.Text = res;
         }
