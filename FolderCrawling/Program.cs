@@ -56,7 +56,7 @@ namespace FolderCrawling {
                     file_count[file_name]++;
                     file_name += "->" + file_count[file_name];
                 }
-                if (file_name != find_file) {
+                if (temp_name != find_file) {
                     if (Directory.Exists(current_path)) {
                         directories = Directory.GetDirectories(current_path);
                         files = Directory.GetFiles(current_path);
@@ -69,7 +69,7 @@ namespace FolderCrawling {
                     }
                 } else {
                     if (!found) {
-                        this.path_list.Add(Directory.GetParent(current_path).FullName);
+                        this.path_list.Add(Directory.GetParent(current_path).FullName + @"\");
                     }
                     if (!find_all_occurence && !found) {
                         found = true;
@@ -106,7 +106,7 @@ namespace FolderCrawling {
                 string file_name = Path.GetFileName(current_path);
                 if (file_name == find_file) {
                     if (!found) {
-                        this.path_list.Add(Directory.GetParent(current_path).FullName);
+                        this.path_list.Add(Directory.GetParent(current_path).FullName + @"\");
                     }
                     if (!find_all_occurence && !found) {
                         found = true;
@@ -148,7 +148,7 @@ namespace FolderCrawling {
                         parent_file_name = 
                                 parent_count[current_path] == 0 ? 
                                     parent_file_name :
-                                    parent_file_name + "->" + file_count[parent_file_name].ToString();
+                                    parent_file_name + "->" + parent_count[current_path].ToString();
 
                         file_count[children_file_name] =
                                 !file_count.ContainsKey(children_file_name) ?
