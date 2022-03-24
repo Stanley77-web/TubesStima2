@@ -65,7 +65,7 @@ namespace FolderCrawling {
                     if (!found) {
                         this.path_list.Add(current_path);
                     }
-                    
+
                     if (!find_all_occurence && !found) {
                         found = true;
                         // stopwatch berhenti
