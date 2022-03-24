@@ -9,6 +9,8 @@ namespace FolderCrawling {
         private bool findAllOccurence = false;
         public System.Diagnostics.Process p = new System.Diagnostics.Process();
         Program prog;
+        int animation_speed = 250;
+        
 
         [STAThread]
         static void Main() {
@@ -94,7 +96,7 @@ namespace FolderCrawling {
                 if (!found)
                 {
                     gViewer1.Graph = graph;
-                    await Task.Delay(250);
+                    await Task.Delay(animation_speed);
                 }
                 string parent_file_name = elmt.Item1;
                 string node_id_parent = parent_file_name;
@@ -155,7 +157,7 @@ namespace FolderCrawling {
                     if (!found)
                     {
                         gViewer1.Graph = graph;
-                        await Task.Delay(250);
+                        await Task.Delay(animation_speed);
                     }
 
                     if (!find_all_occurence && !found)
@@ -192,7 +194,7 @@ namespace FolderCrawling {
                 res += "None found\n";
             }
             for (int i = 0; i < resultPath.Count(); i++) {
-                res += (i + 1) + ". file://" + resultPath[i] + "\n";
+                res += (i + 1) + ". file:\\\\" + resultPath[i] + "\n";
             }
             this.richTextBox1.Text = res;
         }
@@ -204,6 +206,21 @@ namespace FolderCrawling {
 
         private void panel1_Paint(object sender, PaintEventArgs e) {
 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            animation_speed = trackBar1.Value;
         }
     }
 }

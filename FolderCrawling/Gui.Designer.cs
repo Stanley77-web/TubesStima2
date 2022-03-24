@@ -45,9 +45,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +119,7 @@
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.richTextBox1.ShortcutsEnabled = false;
             this.richTextBox1.Size = new System.Drawing.Size(1098, 212);
             this.richTextBox1.TabIndex = 3;
@@ -130,9 +135,9 @@
             this.label1.Location = new System.Drawing.Point(8, 181);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 46);
+            this.label1.Size = new System.Drawing.Size(331, 46);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Folder Crawler";
+            this.label1.Text = "Folder Crawrene";
             // 
             // panel2
             // 
@@ -291,6 +296,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.button1);
@@ -310,6 +318,49 @@
             this.panel1.Size = new System.Drawing.Size(361, 1017);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(8, 753);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.trackBar1.Maximum = 1000;
+            this.trackBar1.MaximumSize = new System.Drawing.Size(1000, 50);
+            this.trackBar1.Minimum = 100;
+            this.trackBar1.MinimumSize = new System.Drawing.Size(100, 50);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(179, 50);
+            this.trackBar1.SmallChange = 50;
+            this.trackBar1.TabIndex = 13;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 250;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll_1);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Window;
+            this.textBox2.Location = new System.Drawing.Point(193, 753);
+            this.textBox2.MaxLength = 128;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBox2.Size = new System.Drawing.Size(143, 21);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "Animation Speed";
+            this.textBox2.WordWrap = false;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(27, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(170, 139);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // panel4
             // 
@@ -339,6 +390,8 @@
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -364,6 +417,9 @@
         private Panel panel3;
         private Panel panel1;
         private Panel panel4;
+        private PictureBox pictureBox1;
+        private TextBox textBox2;
+        private TrackBar trackBar1;
     }
 }
 
