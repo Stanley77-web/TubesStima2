@@ -64,3 +64,4 @@ E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\bin\Debug\net6.0-wi
 E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.csproj.CopyComplete
 E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.genruntimeconfig.cache
 E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\ref\FolderCrawling.dll
+E:\Stanley\Semester 4\Stima\Tubes\TubesStima2\FolderCrawling\obj\Debug\net6.0-windows\FolderCrawling.Properties.Resources.resources

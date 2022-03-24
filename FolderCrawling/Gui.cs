@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Microsoft.Msagl.Drawing;
+using System.Threading;
 
 namespace FolderCrawling {
     public partial class Gui : Form {
-        private string dirChosen = null;
+        private string dirChosen;
         private bool hasDir = false;
         private bool hasFilename = false;
         private bool findAllOccurence = false;
         public System.Diagnostics.Process p = new System.Diagnostics.Process();
-        Program prog = null;
+        Program prog;
+        int animation_speed = 250;
+        
 
         [STAThread]
         static void Main() {
@@ -50,47 +45,182 @@ namespace FolderCrawling {
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
             if (findAllOccurence) { findAllOccurence = true; } else { findAllOccurence = false; }
-            checkBox1.Text = "Find All Occurence"; // temp fix anj gangerti lagi jancokkkk
+            checkBox1.Text = "Find All Occurence";
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            if (!hasDir) {
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.Text = "";
+            this.label4.Text = "";
+            if (!hasDir)
+            {
                 MessageBox.Show("Folder Directory not chosen", "Error");
-            } else if (!hasFilename) {
+            }
+            else if (!hasFilename)
+            {
                 MessageBox.Show("File Name not set", "Error");
-            } else {
-                gViewer1.OutsideAreaBrush = Brushes.Silver;
+            }
+            else
+            {
+                gViewer1.OutsideAreaBrush = Brushes.White;
                 gViewer1.PanButtonPressed = true;
                 prog = new Program(textBox1.Text, dirChosen);
-                if (radioButton2.Checked) {
-                    gViewer1.Graph = prog.BFS(checkBox1.Checked);
-                } else if (radioButton3.Checked) {
-                    gViewer1.Graph = prog.DFS(checkBox1.Checked);
+                bool findAllOccurence = checkBox1.Checked;
+                if (radioButton2.Checked)
+                {
+                    prog.BFS(findAllOccurence);
+                }
+                else if (radioButton3.Checked)
+                {
+                    prog.DFS(findAllOccurence);
+                }
+                await animateGraph(findAllOccurence);
+                if (prog.path_list.Count == 0)
+                {
+                    MessageBox.Show("File not found", "Error");
                 }
                 label4.Text = prog.elapsedTime();
                 this.showResultPath(prog.path_list);
             }
         }
 
-        private void showResultPath(List<string> resultPath)
+
+        private async Task animateGraph(Boolean find_all_occurence)
         {
-            string res = "";
-            res += "\n\nPath File:\n";
-            if(resultPath.Count() == 0)
+            Boolean found = false;
+            Graph graph = new Graph("Folder Crawling");
+            List<Edge> list_edge = new();
+            graph.AddNode(prog.root_path).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
+            foreach ((string, string) elmt in prog.list_graph)
             {
+                if (!found)
+                {
+                    gViewer1.Graph = graph;
+                    await Task.Delay(animation_speed);
+                }
+                string parent_file_name = elmt.Item1;
+                string node_id_parent = parent_file_name;
+                string children_file_name = elmt.Item2;
+                string node_id_children = children_file_name;
+                string[] str_parent = parent_file_name.Split("->");
+                string[] str_childern = children_file_name.Split("->");
+
+                if (str_parent.Length > 1)
+                {
+                    parent_file_name = str_parent[0];
+                    node_id_parent = str_parent[0] + str_parent[1];
+                }
+
+                if (str_childern.Length > 1)
+                {
+                    children_file_name = str_childern[0];
+                    node_id_children = str_childern[0] + str_childern[1];
+                }
+
+                if (children_file_name == prog.find_file)
+                {
+
+                    Node node_children = new Node(children_file_name);
+                    node_children.Id = node_id_children;
+                    node_children.Attr.Color =
+                        !found ?
+                            Microsoft.Msagl.Drawing.Color.Blue :
+                            Microsoft.Msagl.Drawing.Color.Black;
+
+                    graph.AddNode(node_children);
+
+                    Edge edge = new Edge(graph.FindNode(node_id_parent), node_children, ConnectionToGraph.Connected);
+                    edge.Attr.Color =
+                        !found ?
+                            Microsoft.Msagl.Drawing.Color.Blue :
+                            Microsoft.Msagl.Drawing.Color.Black;
+                    list_edge.Add(edge);
+
+                    if (!found)
+                    {
+                        string check_parent = node_id_children;
+                        do
+                        {
+                            foreach (Edge pair in list_edge)
+                            {
+                                if (pair.TargetNode.Id == check_parent)
+                                {
+                                    string check_children = check_parent;
+                                    check_parent = pair.SourceNode.Id;
+                                    pair.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
+                                    pair.SourceNode.Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
+                                }
+                            }
+                        } while (check_parent != prog.root_path);
+                    }
+
+                    if (!found)
+                    {
+                        gViewer1.Graph = graph;
+                        await Task.Delay(animation_speed);
+                    }
+
+                    if (!find_all_occurence && !found)
+                    {
+                        found = true;
+                    }
+                }
+                else
+                {
+                    Node node = new Node(children_file_name);
+                    node.Id = node_id_children;
+                    node.Attr.Color =
+                        !found ?
+                            Microsoft.Msagl.Drawing.Color.Red :
+                            Microsoft.Msagl.Drawing.Color.Black;
+
+                    graph.AddNode(node);
+                    Edge edge = new Edge(graph.FindNode(node_id_parent), node, ConnectionToGraph.Connected);
+                    edge.Attr.Color =
+                        !found ?
+                            Microsoft.Msagl.Drawing.Color.Red :
+                            Microsoft.Msagl.Drawing.Color.Black;
+                    list_edge.Add(edge);
+                };
+
+            }
+            gViewer1.Graph = graph;
+        }
+
+        private void showResultPath(List<string> resultPath) {
+            string res = "";
+            res += "\nPath File:\n";
+            if (resultPath.Count() == 0) {
                 res += "None found\n";
             }
-            for(int i = 0; i < resultPath.Count(); i++)
-            {
-                res += (i + 1) + ". file://" + resultPath[i] + "\n";
+            for (int i = 0; i < resultPath.Count(); i++) {
+                res += (i + 1) + ". file:\\\\" + resultPath[i] + "\n";
             }
             this.richTextBox1.Text = res;
         }
 
-        private void richTextBox1_LinkClicked(object sender, System.Windows.Forms.LinkClickedEventArgs e)
-        {
+        private void richTextBox1_LinkClicked(object sender, System.Windows.Forms.LinkClickedEventArgs e) {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             p = System.Diagnostics.Process.Start("Explorer.exe", e.LinkText);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            animation_speed = trackBar1.Value;
         }
     }
 }
