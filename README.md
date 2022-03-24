@@ -32,7 +32,7 @@ Aplikasi GUI sederhana untuk mereplikasi fitur dari file explorer pada sistem op
 3. Buka FolderCrawling.exe
 4. 
 ## Link Penting
-- [Spesifikasi Tucil](https://drive.google.com/file/d/1FKKcyr479EsQl5-zi5-zjWhF10OcP5dD/view?usp=sharing)
+- [Spesifikasi Tubes](https://drive.google.com/file/d/1FKKcyr479EsQl5-zi5-zjWhF10OcP5dD/view?usp=sharing)
 - [Repository Github](https://github.com/Stanley77-web/TubesStima2)
     
 ## Penulis
