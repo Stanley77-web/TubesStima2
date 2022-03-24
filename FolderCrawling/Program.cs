@@ -98,10 +98,12 @@ namespace FolderCrawling {
 
             List<string> list_vertice = new List<string>();
             Stack<string> stack_DFS = new Stack<string>();
+            Dictionary<string,int> parent_count = new Dictionary<string,int>();
 
             stack_DFS.Push(root_path);            
             list_vertice.Add(root_path);
             file_count.Add(root_path,0);
+            parent_count.Add(root_path,0);
 
             this.programRunTime.Start();
             while (stack_DFS.Count > 0) {
@@ -125,28 +127,31 @@ namespace FolderCrawling {
                         current_path == root_path ? 
                             current_path :
                             Path.GetFileName(current_path);
+                    string children_path = "";
 
-                    string children_file_name = "";
                     foreach (string directory in directories) {
                         if (list_vertice.IndexOf(directory) == -1 && !take) { 
-                            children_file_name = Path.GetFileName(directory);
-                            stack_DFS.Push(directory);
-                            list_vertice.Add(directory);
+                            children_path = directory;
+                            stack_DFS.Push(children_path);
+                            list_vertice.Add(children_path);
                             take = true;
                         }
                     }
 
                     foreach (string file in files) {
                         if (list_vertice.IndexOf(file) == -1 && !take) {
-                            children_file_name = Path.GetFileName(file);
-                            stack_DFS.Push(file);
-                            list_vertice.Add(file);
+                            children_path = file;
+                            stack_DFS.Push(children_path);
+                            list_vertice.Add(children_path);
                             take = true;
                         }
                     }
                         if (take) {
+                            string children_file_name = Path.GetFileName(children_path);
+                            string temp_file_name = children_file_name;
+
                             parent_file_name = 
-                                file_count[parent_file_name] == 0 ? 
+                                parent_count[current_path] == 0 ? 
                                     parent_file_name :
                                     parent_file_name +  "->" + file_count[parent_file_name].ToString();
                             
@@ -159,7 +164,10 @@ namespace FolderCrawling {
                                 file_count[children_file_name] == 0 ? 
                                     children_file_name :
                                     children_file_name +  "->" + file_count[children_file_name].ToString();
-                                    
+                            
+                            int same_file_count = file_count[temp_file_name];
+
+                            parent_count.Add(children_path,same_file_count);
                             list_graph.Add((parent_file_name,children_file_name)); 
                         }
                     }
