@@ -1,5 +1,3 @@
-using Microsoft.Msagl.GraphViewerGdi;
-using Microsoft.Msagl.Drawing;
 using System.Diagnostics;
 
 namespace FolderCrawling {
@@ -12,7 +10,6 @@ namespace FolderCrawling {
         public List<string> path_list { get; private set; }
         public Dictionary<string, int> file_count { get; private set; }
         public List<(string, string)> list_graph { get; private set; }
-        private DateTime temp = new DateTime();
         private Stopwatch programRunTime = new Stopwatch();
 
         public Program(string find_file, string root_path) {

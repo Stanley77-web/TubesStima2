@@ -1,4 +1,5 @@
 ﻿using Microsoft.Msagl.Drawing;
+using System.Threading;
 
 namespace FolderCrawling {
     public partial class Gui : Form {
@@ -67,7 +68,7 @@ namespace FolderCrawling {
             }
         }
 
-        private void animateGraph(Boolean find_all_occurence) {
+        private async void animateGraph(Boolean find_all_occurence) {
             Boolean found = false;
             Graph graph = new Graph("Folder Crawling");
             List<Edge> list_edge = new();
@@ -126,7 +127,8 @@ namespace FolderCrawling {
                     if (!find_all_occurence && !found) {
                         found = true;
                     }
-                } else {
+                } 
+                else {
                     Node node = new Node(children_file_name);
                     node.Id = node_id_children;
                     node.Attr.Color =
@@ -143,7 +145,7 @@ namespace FolderCrawling {
                     list_edge.Add(edge);
                 };
                 gViewer1.Graph = graph;
-                // Thread.Sleep(1000);
+                await Task.Delay(50);
             }
         }
 
@@ -157,7 +159,7 @@ namespace FolderCrawling {
             }
             for(int i = 0; i < resultPath.Count(); i++)
             {
-                res += (i + 1) + ". file://" + resultPath[i] + "\n";
+                res += (i + 1) + ". file://" + resultPath[i].Replace(" ", "%20") + "\n";
             }
             this.richTextBox1.Text = res;
         }
@@ -166,6 +168,11 @@ namespace FolderCrawling {
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             p = System.Diagnostics.Process.Start("Explorer.exe", e.LinkText);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
