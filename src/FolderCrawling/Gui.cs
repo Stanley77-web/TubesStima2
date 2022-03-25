@@ -119,7 +119,7 @@ namespace FolderCrawling {
                 string children_file_name = elmt.Item2;
                 string node_id_children = children_file_name;
                 string[] str_parent = parent_file_name.Split("->");
-                string[] str_childern = children_file_name.Split("->");
+                string[] str_children = children_file_name.Split("->");
 
                 if (str_parent.Length > 1)
                 {
@@ -127,31 +127,33 @@ namespace FolderCrawling {
                     node_id_parent = str_parent[0] + str_parent[1];
                 }
 
-                if (str_childern.Length > 1)
+                if (str_children.Length > 1)
                 {
-                    children_file_name = str_childern[0];
-                    node_id_children = str_childern[0] + str_childern[1];
+                    children_file_name = str_children[0];
+                    node_id_children = str_children[0] + str_children[1];
                 }
 
+                Node node = new Node(children_file_name);
+                node.Id = node_id_children;
+                node.Attr.Color =
+                    children_file_name == prog.find_file && !found ? 
+                        Microsoft.Msagl.Drawing.Color.Blue : 
+                        !found ?
+                            Microsoft.Msagl.Drawing.Color.Red :
+                            Microsoft.Msagl.Drawing.Color.Black;
+
+                graph.AddNode(node);
+                Edge edge = new Edge(graph.FindNode(node_id_parent), node, ConnectionToGraph.Connected);
+                edge.Attr.Color =
+                    children_file_name == prog.find_file && !found ? 
+                        Microsoft.Msagl.Drawing.Color.Blue : 
+                        !found ?
+                            Microsoft.Msagl.Drawing.Color.Red :
+                            Microsoft.Msagl.Drawing.Color.Black;
+
+                list_edge.Add(edge);
                 if (children_file_name == prog.find_file)
-                {
-
-                    Node node_children = new Node(children_file_name);
-                    node_children.Id = node_id_children;
-                    node_children.Attr.Color =
-                        !found ?
-                            Microsoft.Msagl.Drawing.Color.Blue :
-                            Microsoft.Msagl.Drawing.Color.Black;
-
-                    graph.AddNode(node_children);
-
-                    Edge edge = new Edge(graph.FindNode(node_id_parent), node_children, ConnectionToGraph.Connected);
-                    edge.Attr.Color =
-                        !found ?
-                            Microsoft.Msagl.Drawing.Color.Blue :
-                            Microsoft.Msagl.Drawing.Color.Black;
-                    list_edge.Add(edge);
-
+                {                   
                     if (!found)
                     {
                         string check_parent = node_id_children;
@@ -168,38 +170,15 @@ namespace FolderCrawling {
                                 }
                             }
                         } while (check_parent != prog.root_path);
-                    }
-
-                    if (!found)
-                    {
                         gViewer1.Graph = graph;
                         // delay by certain time so graph building is not instantaneous
-                        await Task.Delay(animation_speed);
+                        await Task.Delay(animation_speed);  
                     }
-
                     if (!find_all_occurence && !found)
                     {
                         found = true;
                     }
                 }
-                else
-                {
-                    Node node = new Node(children_file_name);
-                    node.Id = node_id_children;
-                    node.Attr.Color =
-                        !found ?
-                            Microsoft.Msagl.Drawing.Color.Red :
-                            Microsoft.Msagl.Drawing.Color.Black;
-
-                    graph.AddNode(node);
-                    Edge edge = new Edge(graph.FindNode(node_id_parent), node, ConnectionToGraph.Connected);
-                    edge.Attr.Color =
-                        !found ?
-                            Microsoft.Msagl.Drawing.Color.Red :
-                            Microsoft.Msagl.Drawing.Color.Black;
-                    list_edge.Add(edge);
-                };
-
             }
             gViewer1.Graph = graph;
         }
@@ -228,6 +207,7 @@ namespace FolderCrawling {
         private void trackBar1_Scroll_1(object sender, EventArgs e)
         {
             animation_speed = trackBar1.Value;
+            
         }
     }
 }
