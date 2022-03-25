@@ -45,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -207,7 +208,6 @@
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Find All Occurence";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -296,6 +296,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.trackBar1);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -317,7 +318,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(361, 1017);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Open Sans", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(8, 948);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 26);
+            this.label5.TabIndex = 16;
             // 
             // label6
             // 
@@ -337,7 +347,7 @@
             this.trackBar1.Margin = new System.Windows.Forms.Padding(4);
             this.trackBar1.Maximum = 1000;
             this.trackBar1.MaximumSize = new System.Drawing.Size(1000, 50);
-            this.trackBar1.Minimum = 100;
+            this.trackBar1.Minimum = 10;
             this.trackBar1.MinimumSize = new System.Drawing.Size(100, 50);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(179, 50);
@@ -416,6 +426,7 @@
         private PictureBox pictureBox1;
         private TrackBar trackBar1;
         private Label label6;
+        private Label label5;
     }
 }
 

@@ -6,24 +6,25 @@ namespace FolderCrawling {
         private string dirChosen;
         private bool hasDir = false;
         private bool hasFilename = false;
-        private bool findAllOccurence = false;
         public System.Diagnostics.Process p = new System.Diagnostics.Process();
         Program prog;
         int animation_speed = 250;
         
 
+        // main procedure if we start the program
         [STAThread]
         static void Main() {
             ApplicationConfiguration.Initialize();
             Application.Run(new Gui());
         }
 
-
+        // handles creating the gui for the app
         public Gui() {
             InitializeComponent();
             radioButton2.Checked = true;
         }
 
+        // handles choosing a directory through a button
         private void dirButton_Click(object sender, EventArgs e) {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.Description = "Pick a Folder";
@@ -35,7 +36,9 @@ namespace FolderCrawling {
             }
         }
 
+        // handles the input filename box update
         private void textBox1_TextChanged(object sender, EventArgs e) {
+            // make sure that the user has inputted a filename
             if (textBox1.Text == "Input Filename" || textBox1.Text == "") {
                 hasFilename = false;
             } else {
@@ -43,29 +46,34 @@ namespace FolderCrawling {
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-            if (findAllOccurence) { findAllOccurence = true; } else { findAllOccurence = false; }
-            checkBox1.Text = "Find All Occurence";
-        }
-
+        // handles the start button
         private async void button1_Click(object sender, EventArgs e)
         {
             this.richTextBox1.Text = "";
             this.label4.Text = "";
             if (!hasDir)
             {
+                // throw message box if user has not yet chosen a dir
                 MessageBox.Show("Folder Directory not chosen", "Error");
             }
             else if (!hasFilename)
             {
+                // throw message box if user has not yet inputted a filename
                 MessageBox.Show("File Name not set", "Error");
             }
             else
             {
+                // has dir AND filename, run search algorithm
+
+                // set graph viewer color
                 gViewer1.OutsideAreaBrush = Brushes.White;
                 gViewer1.PanButtonPressed = true;
+
+                // initialize the search program
                 prog = new Program(textBox1.Text, dirChosen);
                 bool findAllOccurence = checkBox1.Checked;
+                
+                // switch case for BFS DFS
                 if (radioButton2.Checked)
                 {
                     prog.BFS(findAllOccurence);
@@ -74,17 +82,24 @@ namespace FolderCrawling {
                 {
                     prog.DFS(findAllOccurence);
                 }
+
+                // animate making the graph
                 await animateGraph(findAllOccurence);
                 if (prog.path_list.Count == 0)
                 {
+                    // throw message box if file is not found
                     MessageBox.Show("File not found", "Error");
                 }
-                label4.Text = prog.elapsedTime();
+
+                // print the run time
+                label5.Text = prog.elapsedTime();
+
+                // print the result paths through hyperlinks
                 this.showResultPath(prog.path_list);
             }
         }
 
-
+        // handles animating the graph
         private async Task animateGraph(Boolean find_all_occurence)
         {
             Boolean found = false;
@@ -96,6 +111,7 @@ namespace FolderCrawling {
                 if (!found)
                 {
                     gViewer1.Graph = graph;
+                    // delay by certain time so graph building is not instantaneous
                     await Task.Delay(animation_speed);
                 }
                 string parent_file_name = elmt.Item1;
@@ -157,6 +173,7 @@ namespace FolderCrawling {
                     if (!found)
                     {
                         gViewer1.Graph = graph;
+                        // delay by certain time so graph building is not instantaneous
                         await Task.Delay(animation_speed);
                     }
 
@@ -187,6 +204,8 @@ namespace FolderCrawling {
             gViewer1.Graph = graph;
         }
 
+        // handles showing the resulting path of the searching program
+        // prints the resulting path using hyperlinks below the graph viewer
         private void showResultPath(List<string> resultPath) {
             string res = "";
             res += "\nPath File:\n";
@@ -199,25 +218,13 @@ namespace FolderCrawling {
             this.richTextBox1.Text = res;
         }
 
+        // handles opening file explorer if a hyperlink is clicked
         private void richTextBox1_LinkClicked(object sender, System.Windows.Forms.LinkClickedEventArgs e) {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             p = System.Diagnostics.Process.Start("Explorer.exe", e.LinkText);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e) {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
+        // handles updating animation speed through scrollbar
         private void trackBar1_Scroll_1(object sender, EventArgs e)
         {
             animation_speed = trackBar1.Value;
